@@ -1,0 +1,18 @@
+{
+ACTIVATE RAINBOW
+
+DO A FROM 1 TO 20 {
+FD 30
+LT 45
+}
+
+IF ( RAINBOW == FALSE ) [
+  FD 30
+  FD 30
+  RT 45
+  EXPLOSION
+
+]
+
+
+}

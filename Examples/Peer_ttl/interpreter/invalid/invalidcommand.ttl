@@ -1,0 +1,12 @@
+{ 
+ FD 30
+ LT 20
+ FD 50
+ DO A FROM 1 TO 10 
+ {
+   FD 10
+   LT 90
+ }
+ Invcommand
+}
+   

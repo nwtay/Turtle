@@ -1,0 +1,9 @@
+{
+DO A FROM 20 TO 200 {
+RT 45
+FD A
+RT 45
+FD A
+FD 5
+}
+}

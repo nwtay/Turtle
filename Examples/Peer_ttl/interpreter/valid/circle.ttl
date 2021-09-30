@@ -1,0 +1,1 @@
+{ DO A FROM 1 TO 360 { FD 1 LT 1 } }

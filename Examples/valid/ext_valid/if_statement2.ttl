@@ -1,0 +1,16 @@
+{
+ACTIVATE RAINBOW
+FD 30
+FD 43
+
+IF ( RAINBOW == TRUE ) [
+  FD 30
+  FD 30
+  RT 45
+  EXPLOSION
+
+]
+
+FD 30
+
+}

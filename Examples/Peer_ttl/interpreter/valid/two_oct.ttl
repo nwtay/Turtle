@@ -1,0 +1,1 @@
+{ DO A FROM 1 TO 8 { FD 30 RT 45 } FD 200 DO A FROM 1 TO 8 { FD 30 RT 45 } }

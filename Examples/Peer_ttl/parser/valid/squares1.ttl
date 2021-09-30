@@ -1,0 +1,19 @@
+{
+DO B FROM 1 TO 9 {
+DO A FROM 40 TO 55 {
+RT 90
+FD A
+RT 90
+FD A
+RT 90
+FD A
+RT 90
+FD A
+FD 15
+}
+RT 180
+FD 130
+RT 180
+RT 40
+}
+}

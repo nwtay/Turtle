@@ -1,0 +1,51 @@
+For the start of my extension, I extended the formal grammar to incorporate
+MODES.
+
+These modes consisted of:
+- GHOST MODE (still move around the screen, with no line shown)
+- FAST MODE (move around the screen faster, with red line)
+- SLOW MODE (move around the screen slower, with green line)
+- RAINBOW MODE (each line is a different colour from the previous, following rainbow pattern)
+
+
+The new Formal Grammar:
+
+<MAIN> ::= "{" <INSTRCTLST>
+<INSTRCTLST> ::= <INSTRUCTION><INSTRCTLST> | "}" | "]"
+<INSTRUCTION> ::= <FD> | <LT> | <RT> | <DO> | <SET> | <EXPLOSION> | <ACTIVATE> | <DEACTIVATE> | <TELEPORT> | <IF>
+<FD> ::= "FD" <VARNUM>
+<LT> ::= "LT" <VARNUM>
+<RT> ::= "RT" <VARNUM>
+<EXPLOSION> ::= "EXPLOSION"
+<TELEPORT> ::= "TELEPORT"
+<DO> ::= "DO" <VAR> "FROM" <VARNUM> "TO" "{" <INSTRCTLST>
+<IF> ::= "IF" "(" <CONDITION> ")" "[" <INSTRCTLST> "]"
+<CONDITION> ::= <MODE> "==" <BOOL> | <VAR> "==" <VARNUM>
+<BOOL> ::= "TRUE" | "FALSE"
+<ACTIVATE> ::= "ACTIVATE" <MODE>
+<DEACTIVATE> ::= "DEACTIVATE" <MODE>
+<MODE> ::= "GHOST" | "FAST" | "SLOW" | "RAINBOW"
+<VARNUM> "{" <INSTRCTLST>
+<VAR> ::= [A−Z]
+<VARNUM> ::= number | <VAR>
+<SET> ::= "SET" <VAR> ":=" <POLISH>
+<POLISH> ::= <OP> <POLISH> | <VARNUM> <POLISH> | ";"
+<OP> ::= "+" | "−" | "*" | "/"
+
+
+Note, activating a mode when already in another mode, overwrites the
+previous mode. It doesn't make sense for fast / slow to be activated at the same
+time. Also if the user wants to slow down, doesn't make speed up after this
+mode is deactivated.
+
+Also incorporated:
+
+Random jumps, i.e. jump to somewhere random without drawing = teleport. Also shows
+homemade animation of appearing.
+
+Explosion - explosion displayed on screen - rapidly growing circles of colour from
+Origin x,y. Then partial reset around the explosion region.
+
+Added conditionals too: if. For modes and variables. Functions include updating the
+Current word if the condition in the IF is false, to the first instruction outside
+Of the IF TRUE instructions.

@@ -1,0 +1,18 @@
+{
+DO A FROM 1 TO 100 {
+DO B FROM A TO 100 {
+DO C FROM A TO 100 {
+DO D FROM A TO 100 {
+DO E FROM A TO 100 {
+DO F FROM A TO 100 {
+FD B
+LT B
+RT D
+SET A := F ;
+}
+}
+}
+}
+}
+}
+}

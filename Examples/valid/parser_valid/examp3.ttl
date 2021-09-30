@@ -1,0 +1,4 @@
+{ DO B FROM B TO B {
+FD B FD B FD B
+SET B := B C D C + ;
+} }

@@ -1,0 +1,55 @@
+General testing strategy was to write assertion tests myself on the knowledge of my already built functions. This white-box testing attempted to consider every possible way a function could throw an error, such as a sanitize error, or give an incorrect result.
+
+I started this off with a reduced instruction set, as given in the question. I thought about some general functions, that could be used across all three parts of the question. These functions were put in General/general.c, and are tested with assertion tests in parser.c. 
+
+I then built my parser, and tested all functions using assertion tests also. Making my functions predominantly bool type functions allowed for strict testing with clear results. I string copied instructions in to the calloc’d 2d array in my structure, as if it were being read in from a file. Then I called a function, which would give a result based on the strings that were read from the array.
+
+After my parser was complete, I wrote some example turtle files. Of these files, some were valid and some were not. If files were invalid but the text inside them passed the formal grammar, I adapted my functions. The valid and invalid ttl files are showing in Examples/valid/parser_valid and Examples/valid/parser_in valid respectively. 
+
+Some examples:
+
+Example 1: Valid - Will Parse without errors
+
+{ DO A FROM 1 TO 100 {
+SET C := A 1.5 * ;
+FD C 
+RT 62
+}
+}
+
+Example 2: Valid - Will Parse without errors
+
+{ RT 10.23010 }
+
+
+Example 3: Invalid - Invalid since there is text after main finished
+
+{ FD 30
+LT 42
+SET A := 10 ;
+} }
+
+Example 4: Invalid since RT (a turn) is not followed by a number
+
+{ RT 
+RT 10
+}
+
+I followed the same procedure as above for interpreter.
+
+Special notes:
+-	Since the user could enter any number in an instruction list, had to allow for the fact that inputted numbers could be floats / doubles. In order to compare the results of some of my functions with results that I deemed to be the correct output, I had to create a function called double_cmp, which compared the double to the result +- epsilon (0.000001) to account for floating point errors / float comparison warnings. An example where this is used is when pushing/popping to stack. 
+
+I did not retest the functions shared among the interpreter and parser (functions in general). Some functions were very similar for the parser and interpreter, although could not be put in the general file since the slight variations. For these functions, I retested them in the interpreter. This was to ensure that functions used for parsing with added functionality of interpretation, would still pass the parser. An example of a function like this is Main_interp, which is almost the same, aside from a function call to a different Instrctlst function.
+
+Some functions were not so similar, in that expressions that would normally parse were not valid in the interpreter. An example is the Polish function. For example, if, following the polish function, there was more than one double left on the stack, the function returned false. For this retesting needed to be done as well as testing of the function that counted the number of items on the stack.
+
+The majority of the functions in the interpreter were tested using my own calculations.
+
+After constructing my extension, many functions used in interpreter.c were needed for extension. Therefore, I stored these functions in Interpreter/General/general.c, along with the function headers and general structures in Interpreter/General/general.h. The tests for these functions are in Interpreter/specific.c. 
+
+As well as in the interpreter specific.c file, I retested common functions in the extension.c file. These common functions consisted of functions shared with the interpreter, as well as the interpreter and the parser. 
+
+After completing assert tests for all files, I continued to write turtle files for the extension, parser and interpreter. All of these are found in their respective directories. 
+
+To finish off testing, I collaborated with peers and used their turtle files, as a means of performing blackbox testing on my code. These turtle files are found in peer_ttl. As well as this, the examples from the question itself were tested on my files, and used from a directory called neillsexamples.

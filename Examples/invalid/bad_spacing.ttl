@@ -1,0 +1,1 @@
+{DO A FROM 1 TO 50 {FD 40}} 

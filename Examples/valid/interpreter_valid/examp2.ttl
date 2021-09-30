@@ -1,0 +1,41 @@
+{
+
+SET A := 0.1321 20181 23422 / + ;
+
+DO B FROM A TO 100 {
+
+FD B
+FD B
+RT B
+
+
+FD 30
+LT A
+FD 40
+}
+
+DO B FROM A TO 100 {
+
+FD B
+FD B
+RT B
+
+
+FD 30
+LT A
+FD 40
+}
+
+DO B FROM A TO 100 {
+
+FD B
+FD B
+RT B
+
+
+FD 30
+LT A
+FD 40
+}
+
+}

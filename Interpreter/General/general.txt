@@ -1,0 +1,5 @@
+This folder contains the functions, and header file used both in the interpreter and extension that are common.
+The tests for these functions are in specific.c. 
+
+Other functions needed for interpretation are also shared by the interpreter and the extension, but since slight variations 
+needed to be made in each case, they appear in their repsective directories.

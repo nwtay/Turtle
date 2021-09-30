@@ -1,0 +1,2 @@
+{ SET A := 50 3 / ; 
+DO B FROM A TO 50 { FD A RT B } }

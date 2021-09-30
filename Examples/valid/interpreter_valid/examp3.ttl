@@ -1,0 +1,7 @@
+{
+DO A FROM 1 TO 100 {
+DO B FROM A TO 100 {
+FD B
+}
+}
+}
